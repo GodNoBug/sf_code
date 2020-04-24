@@ -1,12 +1,22 @@
 package jg.tree.union_find.union;
 
 /**
- * 并查集也叫不相交结婚(Disjoint Set)
+ * 并查集也叫不相交集合(Disjoint Set)
+ * 并查集是一种树型的数据结构，用于处理一些不相交集合（Disjoint Sets）的合并及查询问题
+ * 我们通常是在开始时让每个元素构成一个单元素的集合，然后按一定顺序将属于同一组的元素所在的集合合并，其间要反复查找一个元素在哪个集合中
  * 并查集有两个核心操作:
  *   - 查找:查找元素所在的集合(这里的集合不是特指Set这种数据结构,是指广义的数据集合)
  *   - 合并:将两个元素所在的集合合并为一个集合
  *
  */
+
+
+//使用路径压缩、分裂或减半 + 基于rank或者size的优化
+// 可以确保每个操作的均摊时间复杂度为 O(𝛼(𝑛)) , α(𝑛) < 5
+//个人建议的搭配
+//✓ Quick Union
+//✓ 基于 rank 的优化
+//✓ Path Halving 或 Path Spliting
 public abstract class UnionFind {
     protected int[] parents;
 
