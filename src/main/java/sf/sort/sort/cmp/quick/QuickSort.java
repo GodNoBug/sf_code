@@ -173,6 +173,34 @@ public class QuickSort<T extends Comparable<T>> extends Sort<T> {
     }
 
 
+    //  单边循环法和双边循环法的不同体现在partition函数内部。
+    //    单边循环法在开始时和双边循环法类似,都是首先选定基准元素pivot.同时设置一个mark指针指向数列起始位置
+    //,这个mark指针代表小于基准元素的区域边界接下来,从基准元素的下一个位置开始遍历数组: 若遍历到的元素大于基
+    //准元素, 就继续往后遍历,若遍历到的元素小于基准元素，
+    //    则需要做两件事：
+    //      第一。mark指针右移1位, 因为小于pivot的区域边界增大了1; 第二,让最新遍历到的元素和mark
+    //指针所在位置的元素交换位置,因为最新遍历的元素归属于小于pivot的区域。partition函数实现如下：
+    //分治(单边循环法)
+    // 单边循环法使得小于基准元素的区域增大了.从而达到大于基准元素也增大了
+
+    private int partition2(int[] arr, int startIndex, int endIndex) {
+        // 取第1位置(也可以随机选择位置)的元素作为基准元素
+        int pivot = arr[startIndex];
+        int mark = startIndex;
+        for (int i = startIndex - 1; i <= endIndex; i++) {
+            if (arr[i] < pivot) {
+                mark++;
+                int p = arr[mark];
+                arr[mark] = arr[i];
+                arr[i] = p;
+            }
+        }
+        arr[startIndex] = arr[mark];
+        arr[mark] = pivot;
+        return mark;
+    }
+    // TODO 非递归实现
+
 }
 
 // 双边循环法
