@@ -1,10 +1,11 @@
-package sf.sort.sort.counting;
+package sf.sort.sort.no_cmp.counting;
 
 import org.junit.Test;
 import sf.sort.Sort;
 
 import java.util.Arrays;
 
+// 计数排序
 // 特点:
 //    空间换时间
 // 适用范围:
@@ -13,7 +14,7 @@ import java.util.Arrays;
 //   统计每个整数在序列中出现的次数，进而推导出每个整数在有序序列中的索引
 
 //  以计数排序来说,这种排序算法是利用数组下标来确定元素的正确位置的。
-
+@SuppressWarnings("all")
 public class CountingSort extends Sort<Integer> {
     // 问题:
     //  假设数组中有20个随机整数,取值范围为0～ 10,要求用最快的速度把这20个整数从小到大进行排序。

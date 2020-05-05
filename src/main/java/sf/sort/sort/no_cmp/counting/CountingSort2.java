@@ -1,4 +1,4 @@
-package sf.sort.sort.counting;
+package sf.sort.sort.no_cmp.counting;
 
 import org.junit.Test;
 import sf.sort.Sort;
@@ -74,13 +74,11 @@ public class CountingSort2 extends Sort<Integer> {
         for (int i = 0; i < array.length; i++) {
             counts[array[i] - min]++;
         }
-        System.out.println("变形前的统计数组:" + Arrays.toString(counts));
         // 3.统计数组做变形,后面的元素等于前面的元素之和
         for (int i = 1; i < counts.length; i++) { // 遍历原统计数组.遍历到当前位置,把当前位置的值加上前面一个数,得排除第一个元素.
             // counts[i]=counts[i]+counts[i+1];
             counts[i] += counts[i - 1];
         }
-        System.out.println("变形后的统计数组:" + Arrays.toString(counts));
         // 4.倒序遍历原始数列,从统计数组找到正确的位置,输出到结果数组[从由往左,具备稳定性](画图理解)
         int[] sorted = new int[array.length];
         for (int i = array.length - 1; i >= 0; i--) {
@@ -92,6 +90,8 @@ public class CountingSort2 extends Sort<Integer> {
             array[i] = sorted[i];
         }
     }
+
+
 }
 
 // 分数

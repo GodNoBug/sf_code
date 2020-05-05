@@ -1,4 +1,4 @@
-package sf.sort.sort.counting;
+package sf.sort.sort.no_cmp.counting;
 
 import org.junit.Test;
 import sf.sort.Sort;
