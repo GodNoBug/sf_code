@@ -1,7 +1,7 @@
 package sf.sort.sort.cmp.bubble;
 
 import sf.sort.Sort;
-@SuppressWarnings({"unused"})
+@SuppressWarnings({"unused","all"})
 public class BubbleSort4<T extends Comparable<T>> extends Sort<T> {
 
     @Override
