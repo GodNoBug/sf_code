@@ -2,8 +2,12 @@ package jg.tree.union_find;
 
 import jg.tree.union_find.pojo.Student;
 import jg.tree.union_find.union.*;
+import jg.tree.union_find.union.qf.UnionFind_QF;
+import jg.tree.union_find.union.qu.GenericUnionFind;
+import jg.tree.union_find.union.qu.UnionFind_QU;
+import jg.tree.union_find.union.qu.UnionFind_QU_Size;
 import org.junit.Test;
-import sort.tools.Times;
+import sf.sort.tools.Times;
 
 public class Main {
     @Test
@@ -13,15 +17,17 @@ public class Main {
         // 合并
         union(uf);
     }
+
     @Test
-    public void qu(){
+    public void qu() {
         // 初始化了
         UnionFind uf = new UnionFind_QU(12);
         // 合并
         union(uf);
     }
+
     @Test
-    public void qu_size(){
+    public void qu_size() {
         // 初始化了
         UnionFind uf = new UnionFind_QU_Size(12);
         // 合并
@@ -44,13 +50,14 @@ public class Main {
         System.out.println(uf.isSame(0, 6));
         System.out.println(uf.isSame(0, 5));
 
-        uf.union(4,6);
+        uf.union(4, 6);
         System.out.println(uf.isSame(2, 7));
     }
 
-    private static final int count=100000;
+    private static final int count = 100000;
+
     @Test
-    public void test1(){
+    public void test1() {
 //        time(new UnionFind_QF(count));
 //        time(new UnionFind_QU(count));
 //        time(new UnionFind_QU_Size(count));
@@ -59,28 +66,28 @@ public class Main {
 //        time(new UnionFind_QU_Rank_Path_Spliting(count));
 //        time(new UnionFind_QU_Rank_Path_Halving(count));
         GenericUnionFind<Student> uf = new GenericUnionFind<>();
-        Student stu1=new Student(1,"jack");
-        Student stu2=new Student(2,"rose");
-        Student stu3=new Student(3,"jack");
-        Student stu4=new Student(4,"rose");
+        Student stu1 = new Student(1, "jack");
+        Student stu2 = new Student(2, "rose");
+        Student stu3 = new Student(3, "jack");
+        Student stu4 = new Student(4, "rose");
 
         uf.makeSet(stu1);
         uf.makeSet(stu2);
         uf.makeSet(stu3);
         uf.makeSet(stu4);
 
-        uf.union(stu1,stu2);
-        uf.union(stu3,stu4);
+        uf.union(stu1, stu2);
+        uf.union(stu3, stu4);
 
-        uf.union(stu1,stu4);
+        uf.union(stu1, stu4);
         System.out.println(uf.isSame(stu1, stu2));
         System.out.println(uf.isSame(stu3, stu4));
         System.out.println(uf.isSame(stu1, stu3));
 
     }
 
-    public void time(UnionFind uf){
-        Times.test(uf.getClass().getSimpleName(),()->{
+    public void time(UnionFind uf) {
+        Times.test(uf.getClass().getSimpleName(), () -> {
             for (int i = 0; i < count; i++) {
                 uf.union((int) (Math.random() * count), (int) (Math.random() * count));
             }

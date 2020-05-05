@@ -1,10 +1,13 @@
-package jg.tree.union_find.union;
+package jg.tree.union_find.union.qf;
 
-/**
- * quick_find
- * 查找的时间复杂度:O(1)
- * 合并的时间复杂度:O(n)
- */
+
+import jg.tree.union_find.union.UnionFind;
+
+// quick_find
+//  union的时候,将v1所在集合的所有元素,都指向v2的根节点
+//  find的时候,直接通过下标查询可得
+//  查找的时间复杂度:O(1)
+//  合并的时间复杂度:O(n)
 public class UnionFind_QF extends UnionFind {
     public UnionFind_QF(int capacity) {
         super(capacity);

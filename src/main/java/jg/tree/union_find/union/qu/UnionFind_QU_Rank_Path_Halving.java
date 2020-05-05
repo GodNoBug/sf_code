@@ -1,13 +1,13 @@
-package jg.tree.union_find.union;
-
-/**
- * quick_union,基于Rank优化,加上路径分裂(Path Spliting)
- * 使路径上的每个节点都指向其祖父节点（parent的parent）
- */
-public class UnionFind_QU_Rank_Path_Spliting extends UnionFind_QU_Rank {
+package jg.tree.union_find.union.qu;
 
 
-    public UnionFind_QU_Rank_Path_Spliting(int capacity) {
+//quick_union,基于Rank优化,加上路径减半(Path Spliting)
+//路径减半：使路径上每隔一个节点就指向其祖父节点（parent的parent）
+
+public class UnionFind_QU_Rank_Path_Halving extends UnionFind_QU_Rank {
+
+
+    public UnionFind_QU_Rank_Path_Halving(int capacity) {
         super(capacity);
     }
 
@@ -16,9 +16,8 @@ public class UnionFind_QU_Rank_Path_Spliting extends UnionFind_QU_Rank {
     public int find(int v) {
         rangeCheck(v);
         while (parents[v] != v) {
-            int p = parents[v];
             parents[v] = parents[parents[v]];
-            v = p;
+            v = parents[v]; // 现在的parents[v]不是原来的parents[v],而是祖父节点.让祖父节点干当前节点一样的事情
         }
         return v;
     }

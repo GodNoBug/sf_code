@@ -1,12 +1,7 @@
-package jg.tree.union_find.union;
+package jg.tree.union_find.union.qu;
 
-/**
- * quick_union,基于Rank优化
- * 查找的时间复杂度:O(logn),可以优化至O(α(n)),α(n)<5
- * 合并的时间复杂度:O(logn),可以优化至O(α(n)),α(n)<5
- * <p>
- * 合并的时候,让方法左边参数的根节点,指向右边参数的根节点.永远是拿根节点操作(推荐)
- */
+// quick_union,基于Rank优化
+@SuppressWarnings("all")
 public class UnionFind_QU_Rank extends UnionFind_QU {
     private int[] ranks; // 以某结点为根节点的树高度,下标为根节点,元素为ranks
 
@@ -28,16 +23,11 @@ public class UnionFind_QU_Rank extends UnionFind_QU {
             parents[p1] = p2; // 矮的嫁接到高的,高度不会变
         } else if (ranks[p1] > ranks[p2]) {
             parents[p2] = p1; // 矮的嫁接到高的,高度不会变
-        } else { // 两棵树的高度是一样的,树的高度会加一.谁嫁接谁都可以自己画图理解,
+        } else {
+            // 两棵树的高度是一样的,由于QuickUnion的特性,把一个根节点合并到另一个根节点下面!注意是下面!那么高度就高出一个根节点
+            // 树的高度会加一.谁嫁接谁都可以自己画图理解,
             parents[p1] = p2;
             ranks[p2] += 1;
         }
-
-
     }
 }
-// 在Union的过程中,可能会出现树不平衡的状况.甚至退化成链表
-// find操作从O(logn)逐步变成O(n)
-// 有两种常见的优化方案
-// 1.基于size的优化: 元素少的树 嫁接到 元素多的树
-// 2.基于rank的优化: 矮的树 嫁接到 高的树

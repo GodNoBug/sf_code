@@ -1,11 +1,14 @@
-package jg.tree.union_find.union;
+package jg.tree.union_find.union.qu;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-
+// 对外暴露的不是Node
 public class GenericUnionFind<V> {
     private Map<V, Node<V>> nodes = new HashMap<>();
+
+    //   Map<V, Node<V>>
+    //   V-Node<V>  ->  Node<V>  ->   Node<V>  ->  Node<V>
 
     public void makeSet(V v) {
         if (nodes.containsKey(v)) return;
@@ -18,17 +21,18 @@ public class GenericUnionFind<V> {
         return node == null ? null : node.value;
     }
 
-    // 找出v的根节点,路径减半法
+    // 找出v的根节点,路径减半法缩小树的高度.通过Node的parent属性找根节点
     private Node<V> findNode(V v) {
         Node<V> node = nodes.get(v);
         if (node == null) return null;
 
-        while (!Objects.equals(node.value, node.parent.value)) {
+        while (!Objects.equals(node.value, node.parent.value)) { // 当前节点的父节点是自己的时候,那么就是根节点.
             node.parent = node.parent.parent;
             node = node.parent;
         }
         return node;
     }
+
 
     public void union(V v1, V v2) {
         Node<V> p1 = findNode(v1);
