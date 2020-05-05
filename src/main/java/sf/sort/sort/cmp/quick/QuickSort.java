@@ -36,6 +36,8 @@ import java.util.Arrays;
 // 这两部分数据分别进行快速排序,整个排序过程可以递归进行,以此达到整个数据变成有序序列
 
 // 如何让左边所有数据都比右边的所有数据要小 ?
+
+// 1. 双边循环法
 // pivot:    选择一个排序的基准点,通常在数列中在一定范围内随机选择
 // left标记:  将左标记向右移动,当左标记的值大于基准点的值,左标记停止移动,切换到右标记[作用,找到比基准点大的数字,扔到右侧]
 // right标记: 将右标记向左移动,当右标记的值小于基准点的值,右标记停止移动,切换到左标记[作用,找到比基准点小的数字,扔到左侧]
@@ -51,6 +53,11 @@ import java.util.Arrays;
 //      break;
 //    }
 // }
+// 双边循环法从数组的两边交替遍历元素， 虽然更加直观， 但是代码实现相对烦琐。
+
+// 2.单边循环法
+//
+
 public class QuickSort<T extends Comparable<T>> extends Sort<T> {
 
     @Override
@@ -167,6 +174,8 @@ public class QuickSort<T extends Comparable<T>> extends Sort<T> {
 
 
 }
+
+// 双边循环法
 // | 4 | 7 | 6 | 5 | 3 | 2 | 8 | 1 |
 //   首先选定基准元素pivot,并且设置两个指针left和right,指向数列的最左和最右两个元素
 // | 4 | 7 | 6 | 5 | 3 | 2 | 8 | 1 |   pivot=4
@@ -206,3 +215,12 @@ public class QuickSort<T extends Comparable<T>> extends Sort<T> {
 //               ↑
 //             left(right)
 // 接下来就是递归起作用了
+
+
+// 单边循环法
+// 只从数组的一边对元素进行遍历和交换
+// | 4 | 7 | 6 | 5 | 3 | 2 | 8 | 1 |
+//   开始和双边循环法相似,首先选定基准元素pivot. 同时, 设置一个mark指针指向数列起始位置,
+// 这个mark指针代表小于基准元素的区域边界。
+// | 4 | 7 | 6 | 5 | 3 | 2 | 8 | 1 |  pivot=4
+//  mark

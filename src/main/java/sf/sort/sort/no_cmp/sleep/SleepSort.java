@@ -1,4 +1,4 @@
-package sf.sort.sort.cmp.sleep;
+package sf.sort.sort.no_cmp.sleep;
 
 import org.junit.Test;
 // 最垃圾的排序,睡的时间最短最先输出
