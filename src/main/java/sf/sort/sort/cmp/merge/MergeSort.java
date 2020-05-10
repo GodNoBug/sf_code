@@ -13,6 +13,7 @@ package sf.sort.sort.cmp.merge;
 import org.junit.Test;
 // 摆法6165fc smtb 1861 4 12 fnjy tnxz
 import java.util.Arrays;
+
 @SuppressWarnings("all")
 public class MergeSort {
     private int[] leftArray;
@@ -20,7 +21,7 @@ public class MergeSort {
     @Test
     public void sort() {
 
-        int[] ints = {4, 9, 8, 2, 7, 1, 3, 5, 6};
+        int[] ints = {8, 7, 6, 5, 4, 3, 2, 1};
         leftArray = new int[ints.length >> 1];
         // [0,array.length)
         // [0,mid=array.length>>1)

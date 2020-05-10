@@ -2,11 +2,10 @@ package jg.linear_list.array;
 
 import jg.linear_list.AbstractList;
 
-/**
- * ArrayList与之类似
- *
- * @param <E>
- */
+
+// ArrayList与之类似
+// 一元多项式
+
 @SuppressWarnings("unchecked")
 public class DynamicArray<E> extends AbstractList<E> {
 

@@ -110,4 +110,20 @@ public class CoinChange {
         }
         System.out.println(coins);
     }
+
+    // 从最大的面值开始选,一直选(不断选),直到最大面值不能选位置,然后永久跳过这一面额,选第二大面值
+    public void coinChange4(int[] faces, int money) {
+        Arrays.sort(faces); //  默认从小到大排序
+        int coins = 0; // 当前找硬币个数
+        int idx = faces.length - 1;
+        while (idx >= 0) {
+            while (money >= faces[idx]) {
+                System.out.println(faces[idx]);
+                money -= faces[idx];
+                coins++;
+            }
+            idx--;
+        }
+        System.out.println(coins);
+    }
 }

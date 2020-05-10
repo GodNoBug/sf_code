@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
-
+@SuppressWarnings("all")
 public class ZeroOneKnapsack {
     // 练习3 - 0-1 背包
     // 有n件物品和一个最大承重为W的背包,每件物品的重量是wi,价值是vi
